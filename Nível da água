@@ -1,0 +1,45 @@
+"""
+Atividade: Controle de Níveis de Água
+Objetivo: Simular o monitoramento de um reservatório utilizando cores com a biblioteca colorama.
+"""
+
+from colorama import Fore, Style, init
+
+# Inicializa o colorama e garante que o estilo padrão seja restaurado automaticamente
+init(autoreset=True)
+
+# Lista estruturada contendo os níveis, situações e cores sugeridas pela atividade
+niveis_reservatorio = [
+    {"nivel": 1, "descricao": "Nível 1: Muito baixo (crítico)", "cor": Fore.RED},
+    {"nivel": 2, "descricao": "Nível 2: Baixo", "cor": Fore.YELLOW},
+    {"nivel": 3, "descricao": "Nível 3: Médio", "cor": Fore.GREEN},
+    {"nivel": 4, "descricao": "Nível 4: Alto", "cor": Fore.CYAN},
+    {"nivel": 5, "descricao": "Nível 5: Muito alto (alerta)", "cor": Fore.BLUE}
+]
+
+def exibir_alerta(nivel_info):
+    """
+    Função responsável por exibir no terminal a situação atual 
+    do reservatório utilizando a cor correspondente.
+    """
+    print(f"{nivel_info['cor']}[STATUS] {nivel_info['descricao']}{Style.RESET_ALL}")
+
+def simular_monitoramento():
+    """
+    Função principal que realiza a simulação percorrendo a lista de níveis.
+    """
+    print("=" * 60)
+    print("        SISTEMA DE MONITORAMENTO DE RESERVATÓRIO DE ÁGUA")
+    print("=" * 60)
+    print("Iniciando varredura dos sensores do reservatório...\n")
+    
+    # Utilizando a estrutura de repetição para iterar sobre os níveis da lista
+    for item in niveis_reservatorio:
+        exibir_alerta(item)
+    
+    print("\n" + "=" * 60)
+    print("Simulação concluída com sucesso. Estilo do terminal restaurado.")
+    print("=" * 60)
+
+if __name__ == "__main__":
+    simular_monitoramento()
